@@ -1,0 +1,79 @@
+{
+	"cruise": {
+		"fullPayment": {
+			"searchPage": {
+				"cruiseLine": "Royal Caribbean",
+				"sailingDates": {
+					"from": "1-Jan-2025",
+					"to": "31-Jan-2025"
+				}
+			},
+			"resultsPage": {},
+			"detailsPage": {
+				"numberOfGuests": 2,
+				"guestAge": [
+					44,
+					46
+				],
+				"country": "US",
+				"state": "AK"
+			},
+			"categoryPage": {},
+			"cabinPage": {},
+			"checkoutPage": {
+				"guestInformation": [
+					{
+						"title": "Mr",
+						"gender": "Male",
+						"firstName": "Monish",
+						"lastName": "Luthra",
+						"dateOfBirth": "7-Feb-1992",
+						"address": {
+							"Street": "Koramangala 8th Block, Bengaluru",
+							"country": "us",
+							"state": "Alaska",
+							"city": "Alaska",
+							"zipCode": 45395
+						}
+					},
+					{
+						"title": "Mrs",
+						"gender": "Female",
+						"firstName": "Anna",
+						"lastName": "Luthra",
+						"dateOfBirth": "18-Aug-1994",
+						"address": {
+							"Street": "Koramangala 8th Block, Bengaluru",
+							"country": "us",
+							"state": "Alaska",
+							"city": "Alaska",
+							"zipCode": 45395
+						}
+					}
+				],
+				"bookingContactPerson": {
+					"email": "s@ch.in",
+					"phone": "9456321520"
+				},
+				"travelInsurance": false
+			}
+		},
+		
+		"depositPayment": {
+			
+		},
+		
+		"holdPayment": {
+			
+		}
+	},
+	
+	"air": {
+		
+	},
+	
+	"hotel": {
+		
+	}
+}
+

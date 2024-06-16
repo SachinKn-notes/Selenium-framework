@@ -9,7 +9,7 @@ public class JsonPathUtils {
     JsonPath jsonPath;
     
     public JsonPathUtils(String filePath) {
-        jsonPath = new JsonPath(new File("./src/test/resources/TestData.json"));
+        jsonPath = new JsonPath(new File(filePath));
     }
     
     public JsonPath getJsonPath(String... params) {

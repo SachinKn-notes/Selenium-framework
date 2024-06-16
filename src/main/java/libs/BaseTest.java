@@ -48,7 +48,7 @@ public class BaseTest {
         JsonPath testData = jsonPathUtils.getJsonPath(parameters[0], parameters[1]);
         
         return new Object[][] {
-            {new WebDriverActions(new ChromeDriver()), testData}
+            {new WebDriverActions(), testData}
         };
         
     }

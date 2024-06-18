@@ -1,9 +1,8 @@
 package libs;
 
-import java.io.File;
 import java.lang.reflect.Method;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import libs.utils.JsonPathUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;

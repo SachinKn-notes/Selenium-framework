@@ -11,13 +11,17 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverActions {
     
-    WebDriver driver;
+    private final WebDriver driver;
     static final int TIMEOUT = 60;
     
     public WebDriverActions() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    }
+
+    public WebDriver getWebDriver() {
+        return driver;
     }
 
     public void waitForElementToDisappear(By locator) {

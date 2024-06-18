@@ -1,10 +1,13 @@
-package Modules;
+package modules;
 
-import Modules.Pages.NewSearchPage;
-import Modules.Pages.OldSearchPage;
-import Modules.Pages.SearchPage;
+import libs.utils.PropertyUtils;
+import modules.Pages.NewSearchPage;
+import modules.Pages.OldSearchPage;
+import modules.Pages.SearchPage;
 import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
+
+import java.util.Properties;
 
 public class SearchModule {
 
@@ -23,8 +26,8 @@ public class SearchModule {
         }
     }
 
-    public void openSearchPageUrl(int siid) {
-        actions.openUrl("https://uat.odysol.com/swift/cruise?siid=" + siid);
+    public void openSearchPageUrl(int siid) throws Exception {
+        actions.openUrl(String.format(PropertyUtils.getProperty("urls", "cruiseUrl"), siid));
         initiatePageReference(siid);
     }
 

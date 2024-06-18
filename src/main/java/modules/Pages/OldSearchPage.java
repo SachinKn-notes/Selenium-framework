@@ -1,14 +1,13 @@
-package Modules.Pages;
+package modules.Pages;
 
 import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
 import org.openqa.selenium.By;
 
-public class NewSearchPage extends SearchPage {
-
+public class OldSearchPage extends SearchPage {
     WebDriverActions actions;
 
-    public NewSearchPage(WebDriverActions actions) {
+    public OldSearchPage(WebDriverActions actions) {
         this.actions = actions;
     }
 
@@ -26,11 +25,11 @@ public class NewSearchPage extends SearchPage {
 
     @Override
     public void fillSearchParameters(JsonPath testData) {
-        actions.type(SELECT_CRUISE_LINE, testData.getString("searchPage.cruiseLine"));
+
     }
 
     @Override
     public void clickOnSearch() {
-        actions.click(SEARCH_BUTTON);
+
     }
 }

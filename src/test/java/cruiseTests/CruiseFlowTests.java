@@ -1,7 +1,9 @@
 package cruiseTests;
 
-import Modules.SearchModule;
-import org.openqa.selenium.By;
+import modules.ResultsModule;
+import modules.SearchModule;
+import libs.utils.ScreenGrabber;
+import objects.EnumContainer.*;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -12,16 +14,23 @@ import libs.WebDriverActions;
 public class CruiseFlowTests extends BaseTest {
     @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider")
     @Parameters(value = {"cruise", "fullPayment"})
-    public void cruiseFlowFullPaymentTest(WebDriverActions actions, JsonPath testData) {
+    public void cruiseFlowFullPaymentTest(WebDriverActions actions, JsonPath testData) throws Exception {
 
         // Variables
         SearchModule searchModule = new SearchModule(actions);
+        ResultsModule resultsModule = new ResultsModule(actions);
 
         // Search Page actions
         searchModule.openSearchPageUrl(130386);
         searchModule.waitForPageToLoad();
         searchModule.fillSearchParameters(testData);
         searchModule.clickOnSearch();
+        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());
+
+        // Results Page actions
+        resultsModule.waitForPageToLoad();
+        resultsModule.clickBookNowButton();
+        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
     }
 
     @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider")

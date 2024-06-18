@@ -1,4 +1,4 @@
-package Modules.Pages;
+package modules.Pages;
 
 import io.restassured.path.json.JsonPath;
 

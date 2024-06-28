@@ -11,8 +11,12 @@ public class JsonPathUtils {
     public JsonPathUtils(String filePath) {
         jsonPath = new JsonPath(new File(filePath));
     }
-    
-    public JsonPath getJsonPath(String... params) {
-        return jsonPath.setRootPath(String.join(".", params));
+
+    public int getSize(String... pathParams) {
+        return jsonPath.getInt(String.join(".", pathParams) + ".size()");
+    }
+
+    public JsonPath getJsonPath(String... pathParams) {
+        return jsonPath.setRootPath(String.join(".", pathParams));
     }
 }

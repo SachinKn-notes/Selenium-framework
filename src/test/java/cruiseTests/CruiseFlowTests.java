@@ -12,8 +12,6 @@ import io.restassured.path.json.JsonPath;
 import libs.BaseTest;
 import libs.WebDriverActions;
 
-import java.util.List;
-
 public class CruiseFlowTests extends BaseTest {
     @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider")
     @Parameters(value = {"cruise", "fullPayment"})

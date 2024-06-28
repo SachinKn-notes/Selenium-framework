@@ -6,8 +6,7 @@ import modules.Pages.OldSearchPage;
 import modules.Pages.SearchPage;
 import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
-
-import java.util.Properties;
+import objects.PackageObject;
 
 public class SearchModule {
 
@@ -18,20 +17,20 @@ public class SearchModule {
         this.actions = actions;
     }
 
-    public void initiatePageReference(int siid) {
-        if (siid == 130386) {
+    public void initiatePageReference(PackageObject packageObject) {
+        if (packageObject.getSiid() == 130386) {
             searchPage = new NewSearchPage(actions);
-        } else if (siid == 130385) {
-            searchPage = new OldSearchPage(actions);
+        } else if (packageObject.getSiid() == 130385) {
+            searchPage = new NewSearchPage(actions);
         }
     }
 
-    public void openSearchPageUrl(int siid) throws Exception {
-        actions.openUrl(String.format(PropertyUtils.getProperty("urls", "cruiseUrl"), siid));
-        initiatePageReference(siid);
+    public void openSearchPageUrl(PackageObject packageObject) throws Exception {
+        actions.openUrl(String.format(PropertyUtils.getProperty("urls", "cruiseUrl"), packageObject.getSiid()));
     }
 
-    public void waitForPageToLoad() {
+    public void waitForPageToLoad(PackageObject packageObject) {
+        initiatePageReference(packageObject);
         searchPage.waitForPageToLoad();
     }
 

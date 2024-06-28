@@ -36,10 +36,6 @@ public class BaseTest {
         System.out.println("Running afterMethod()");
     }
     
-    static {
-        System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
-    }
-    
     @DataProvider(name = "genericDataProvider")
     public Object[][] genericDataProvider(Method method) throws Exception {
         

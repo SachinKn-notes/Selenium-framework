@@ -1,11 +1,10 @@
 package modules;
 
-import io.restassured.path.json.JsonPath;
 import libs.utils.PropertyUtils;
 import modules.Pages.NewSearchPage;
 import modules.Pages.OldSearchPage;
 import modules.Pages.SearchPage;
-
+import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
 
 public class SearchModule {

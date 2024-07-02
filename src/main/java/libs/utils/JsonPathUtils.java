@@ -6,13 +6,19 @@ import io.restassured.path.json.JsonPath;
 
 public class JsonPathUtils {
     
-    JsonPath jsonPath;
+    String filePath;
     
     public JsonPathUtils(String filePath) {
-        jsonPath = new JsonPath(new File(filePath));
+        this.filePath = filePath;
     }
-    
-    public JsonPath getJsonPath(String... params) {
-        return jsonPath.setRootPath(String.join(".", params));
+
+    public int getSize(String... pathParams) {
+        JsonPath jsonPath = new JsonPath(new File(filePath));
+        return jsonPath.getInt(String.join(".", pathParams) + ".size()");
+    }
+
+    public JsonPath getJsonPath(String... pathParams) {
+        JsonPath jsonPath = new JsonPath(new File(filePath));
+        return jsonPath.setRootPath(String.join(".", pathParams));
     }
 }

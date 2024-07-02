@@ -4,6 +4,7 @@ import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
 import objects.EnumContainer.*;
+import objects.PackageObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -17,18 +18,22 @@ public class CruiseFlowTests extends BaseTest {
     public void cruiseFlowFullPaymentTest(WebDriverActions actions, JsonPath testData) throws Exception {
 
         // Variables
+        PackageObject packageObject = new PackageObject();
         SearchModule searchModule = new SearchModule(actions);
         ResultsModule resultsModule = new ResultsModule(actions);
 
+        // Set Test Data
+        packageObject.setSiid(130386);
+
         // Search Page actions
-        searchModule.openSearchPageUrl(130386);
-        searchModule.waitForPageToLoad();
+        searchModule.openSearchPageUrl(packageObject);
+        searchModule.waitForPageToLoad(packageObject);
         searchModule.fillSearchParameters(testData);
         searchModule.clickOnSearch();
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());
 
         // Results Page actions
-        resultsModule.waitForPageToLoad();
+        resultsModule.waitForPageToLoad(packageObject);
         resultsModule.clickBookNowButton();
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
     }

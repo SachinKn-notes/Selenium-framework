@@ -1,6 +1,8 @@
 package libs;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import libs.utils.JsonPathUtils;
 import org.testng.annotations.AfterMethod;
@@ -34,22 +36,20 @@ public class BaseTest {
         System.out.println("Running afterMethod()");
     }
     
-    static {
-        System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
-    }
-    
     @DataProvider(name = "genericDataProvider")
     public Object[][] genericDataProvider(Method method) throws Exception {
         
         String[] parameters = method.getAnnotation(Parameters.class).value();
         
         JsonPathUtils jsonPathUtils = new JsonPathUtils("./src/test/resources/TestData.json");
-        JsonPath testData = jsonPathUtils.getJsonPath(parameters[0], parameters[1]);
-        
-        return new Object[][] {
-            {new WebDriverActions(), testData}
-        };
-        
+        int dataCount = jsonPathUtils.getSize(parameters);
+
+        List<Object[]> data = new ArrayList<>();
+        for (int i=0; i<dataCount; i++) {
+            JsonPath testData = jsonPathUtils.getJsonPath(parameters[0], parameters[1] + "[" + i + "]");
+            data.add(new Object[]{ new WebDriverActions(), testData });
+        }
+        return data.toArray(Object[][]::new);
     }
 }
 

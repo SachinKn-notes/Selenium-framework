@@ -15,6 +15,7 @@ public class WebDriverActions {
     static final int TIMEOUT = 60;
     
     public WebDriverActions() {
+        System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

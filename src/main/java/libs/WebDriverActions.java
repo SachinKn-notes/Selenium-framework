@@ -13,6 +13,7 @@ public class WebDriverActions {
     
     private final WebDriver driver;
     static final int TIMEOUT = 60;
+    private int driverNumber;
     
     public WebDriverActions() {
         System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
@@ -23,6 +24,14 @@ public class WebDriverActions {
 
     public WebDriver getWebDriver() {
         return driver;
+    }
+
+    public int getDriverNumber() {
+        return driverNumber;
+    }
+
+    public void setDriverNumber(int driverNumber) {
+        this.driverNumber = driverNumber;
     }
 
     public void waitForElementToDisappear(By locator) {

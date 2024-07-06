@@ -80,11 +80,13 @@ public class BaseTest {
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method, Object[] obj) {
         String testName = method.getAnnotation(Test.class).testName().replaceAll(":", "-").replaceAll("[\\\\/*?\"<>|]", "&");
-        ExtentTest extentTest = extentReports.createTest(testName);
+        String[] groups = method.getAnnotation(Test.class).groups();
+
+        String name = groups[0] + " - " + testName + (((WebDriverActions) obj[0]).getDriverNumber() == 0
+                ? "" : "_" + ((WebDriverActions) obj[0]).getDriverNumber());
+        ExtentTest extentTest = extentReports.createTest(name);
 
         testInfoMap.put(Thread.currentThread().getId(), extentTest);
-
-		String[] groups = method.getAnnotation(Test.class).groups();
         for (String group : groups) {
             extentTest.assignCategory(group);
         }
@@ -146,7 +148,9 @@ public class BaseTest {
         List<Object[]> data = new ArrayList<>();
         for (int i=0; i<dataCount; i++) {
             JsonPath testData = jsonPathUtils.getJsonPath(parameters[0], parameters[1] + "[" + i + "]");
-            data.add(new Object[]{ new WebDriverActions(), testData });
+            WebDriverActions webDriverActions = new WebDriverActions();
+            webDriverActions.setDriverNumber(i);
+            data.add(new Object[]{ webDriverActions, testData });
         }
         return data.toArray(Object[][]::new);
     }

@@ -86,6 +86,14 @@ public class WebDriverActions {
             driver.findElement(locator).sendKeys(value);
         }
     }
+
+    public void closeDriver() {
+        driver.close();
+    }
+
+    public void quitDriver() {
+        driver.quit();
+    }
 }
 
 

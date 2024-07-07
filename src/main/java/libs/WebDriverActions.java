@@ -1,6 +1,7 @@
 package libs;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +14,7 @@ public class WebDriverActions {
     
     private final WebDriver driver;
     static final int TIMEOUT = 60;
+    private int driverNumber;
     
     public WebDriverActions() {
         System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
@@ -23,6 +25,14 @@ public class WebDriverActions {
 
     public WebDriver getWebDriver() {
         return driver;
+    }
+
+    public int getDriverNumber() {
+        return driverNumber;
+    }
+
+    public void setDriverNumber(int driverNumber) {
+        this.driverNumber = driverNumber;
     }
 
     public void waitForElementToDisappear(By locator) {
@@ -85,6 +95,19 @@ public class WebDriverActions {
             waitForElementToBeEnabled(locator);
             driver.findElement(locator).sendKeys(value);
         }
+    }
+
+    public void type(By locator, String value, Keys keys) {
+        type(locator, value);
+        driver.findElement(locator).sendKeys(keys);
+    }
+
+    public void closeDriver() {
+        driver.close();
+    }
+
+    public void quitDriver() {
+        driver.quit();
     }
 }
 

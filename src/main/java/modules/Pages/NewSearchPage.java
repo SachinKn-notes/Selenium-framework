@@ -3,6 +3,7 @@ package modules.Pages;
 import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 public class NewSearchPage extends SearchPage {
 
@@ -26,7 +27,12 @@ public class NewSearchPage extends SearchPage {
 
     @Override
     public void fillSearchParameters(JsonPath testData) {
-        actions.type(SELECT_CRUISE_LINE, testData.getString("searchPage.cruiseLine"));
+        actions.type(SELECT_CRUISE_LINE, testData.getString("searchPage.cruiseLine"), Keys.ENTER);
+        selectsSailingDates(testData);
+    }
+
+    private void selectsSailingDates(JsonPath testData) {
+
     }
 
     @Override

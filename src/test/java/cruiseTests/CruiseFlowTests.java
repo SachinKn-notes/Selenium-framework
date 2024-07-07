@@ -13,7 +13,7 @@ import libs.BaseTest;
 import libs.WebDriverActions;
 
 public class CruiseFlowTests extends BaseTest {
-    @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider")
+    @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider", groups = {"Id-01", "smoke"})
     @Parameters(value = {"cruise", "fullPayment"})
     public void cruiseFlowFullPaymentTest(WebDriverActions actions, JsonPath testData) throws Exception {
 
@@ -38,13 +38,13 @@ public class CruiseFlowTests extends BaseTest {
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
     }
 
-    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider")
+    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {
 
     }
 
-    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider")
+    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"})
     @Parameters(value = {"cruise", "holdPayment"})
     public void cruiseFlowHoldPaymentTest(WebDriverActions actions, JsonPath testData) {
 

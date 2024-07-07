@@ -1,3 +1,5 @@
 .metadata/
 .idea/
 target/
+test-output/
+archive/

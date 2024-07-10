@@ -1,5 +1,7 @@
 package cruiseTests;
 
+import com.aventstack.extentreports.Status;
+import libs.utils.ReporterUtils;
 import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
@@ -28,6 +30,7 @@ public class CruiseFlowTests extends BaseTest {
         // Search Page actions
         searchModule.openSearchPageUrl(packageObject);
         searchModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS, "SearchPage Loaded");
         searchModule.fillSearchParameters(testData);
         searchModule.clickOnSearch();
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());
@@ -38,13 +41,13 @@ public class CruiseFlowTests extends BaseTest {
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
     }
 
-    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
+    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"}, enabled = false)
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {
 
     }
 
-    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"})
+    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"}, enabled = false)
     @Parameters(value = {"cruise", "holdPayment"})
     public void cruiseFlowHoldPaymentTest(WebDriverActions actions, JsonPath testData) {
 

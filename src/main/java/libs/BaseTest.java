@@ -146,7 +146,7 @@ public class BaseTest {
         }
     }
     
-    @DataProvider(name = "genericDataProvider")
+    @DataProvider(name = "genericDataProvider", parallel = false)
     public Object[][] genericDataProvider(Method method) throws Exception {
         
         String[] parameters = method.getAnnotation(Parameters.class).value();

@@ -41,13 +41,13 @@ public class CruiseFlowTests extends BaseTest {
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
     }
 
-    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"}, enabled = false)
+    @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {
 
     }
 
-    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"}, enabled = false)
+    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"})
     @Parameters(value = {"cruise", "holdPayment"})
     public void cruiseFlowHoldPaymentTest(WebDriverActions actions, JsonPath testData) {
 

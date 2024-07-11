@@ -18,6 +18,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import libs.utils.JsonPathUtils;
+import libs.utils.ReporterUtils;
 import libs.utils.ScreenGrabber;
 import libs.utils.ZipUtils;
 import objects.EnumContainer;
@@ -32,6 +33,10 @@ public class BaseTest {
 
     private static ExtentReports extentReports;
     private static ConcurrentHashMap<Long, ExtentTest> testInfoMap = new ConcurrentHashMap<>();
+
+    public static ExtentTest getExtentTest(Long threadID) {
+        return testInfoMap.get(threadID);
+    }
 
     @BeforeSuite
     public void beforeSuite() {
@@ -79,6 +84,10 @@ public class BaseTest {
     
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method, Object[] obj) {
+
+        System.out.println("username: " + context.getCurrentXmlTest().getParameter("username"));
+        System.out.println("password: " + context.getCurrentXmlTest().getParameter("password"));
+
         String testName = method.getAnnotation(Test.class).testName().replaceAll(":", "-").replaceAll("[\\\\/*?\"<>|]", "&");
         String[] groups = method.getAnnotation(Test.class).groups();
 
@@ -137,7 +146,7 @@ public class BaseTest {
         }
     }
     
-    @DataProvider(name = "genericDataProvider")
+    @DataProvider(name = "genericDataProvider", parallel = false)
     public Object[][] genericDataProvider(Method method) throws Exception {
         
         String[] parameters = method.getAnnotation(Parameters.class).value();

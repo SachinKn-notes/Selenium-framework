@@ -10,13 +10,18 @@ import java.io.IOException;
 
 public class ScreenGrabber {
 
-    static public void getScreenshot(WebDriver driver, String fileName) throws IOException {
+    static public String getScreenshot(WebDriver driver, String fileName) throws IOException {
+
+        String screenShotPath = "./test-output/Screenshots/" + fileName + ".png";
+
         TakesScreenshot tss = (TakesScreenshot) driver;
 
         File from = tss.getScreenshotAs(OutputType.FILE);
-        File to = new File("./test-output/Screenshots/" + fileName + ".png");
+        File to = new File(screenShotPath);
 
         FileHandler.copy(from, to);
+
+        return screenShotPath;
     }
 
     static public void getFullPageScreenshot(WebDriver driver, String fileName) throws IOException {

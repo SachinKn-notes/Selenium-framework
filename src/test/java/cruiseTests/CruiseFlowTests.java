@@ -1,5 +1,7 @@
 package cruiseTests;
 
+import com.aventstack.extentreports.Status;
+import libs.utils.ReporterUtils;
 import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
@@ -28,6 +30,7 @@ public class CruiseFlowTests extends BaseTest {
         // Search Page actions
         searchModule.openSearchPageUrl(packageObject);
         searchModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS, "SearchPage Loaded");
         searchModule.fillSearchParameters(testData);
         searchModule.clickOnSearch();
         ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());

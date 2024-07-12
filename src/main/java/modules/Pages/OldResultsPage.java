@@ -18,4 +18,9 @@ public class OldResultsPage extends ResultsPage {
     public void clickBookNowButton() {
 
     }
+
+    @Override
+    public void confirmThatLandedOnDetailsPage() {
+
+    }
 }

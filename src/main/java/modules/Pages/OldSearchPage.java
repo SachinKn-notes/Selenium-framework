@@ -32,4 +32,9 @@ public class OldSearchPage extends SearchPage {
     public void clickOnSearch() {
 
     }
+
+    @Override
+    public void ConfirmThatLandedOnResultspage() {
+
+    }
 }

@@ -6,4 +6,6 @@ abstract public class ResultsPage {
 
     public abstract void clickBookNowButton();
 
+    public abstract void confirmThatLandedOnDetailsPage();
+
 }

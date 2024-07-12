@@ -8,4 +8,6 @@ abstract public class SearchPage {
     abstract public void fillSearchParameters(JsonPath testData);
 
     public abstract void clickOnSearch();
+
+    public abstract void ConfirmThatLandedOnResultspage();
 }

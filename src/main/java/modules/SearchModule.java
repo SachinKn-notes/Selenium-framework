@@ -42,4 +42,8 @@ public class SearchModule {
     public void clickOnSearch() {
         searchPage.clickOnSearch();
     }
+
+    public void confirmThatLandedOnResultsPage(){
+        searchPage.ConfirmThatLandedOnResultspage();
+    }
 }

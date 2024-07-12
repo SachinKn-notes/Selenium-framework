@@ -32,4 +32,6 @@ public class ResultsModule {
     public void clickBookNowButton() {
         resultsPage.clickBookNowButton();
     }
+
+    public void ConfirmThatLandedOnDetailsPage(){resultsPage.confirmThatLandedOnDetailsPage();}
 }

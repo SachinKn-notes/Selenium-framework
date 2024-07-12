@@ -2,6 +2,7 @@ package cruiseTests;
 
 import com.aventstack.extentreports.Status;
 import libs.utils.ReporterUtils;
+import modules.DetailsModule;
 import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
@@ -23,6 +24,7 @@ public class CruiseFlowTests extends BaseTest {
         PackageObject packageObject = new PackageObject();
         SearchModule searchModule = new SearchModule(actions);
         ResultsModule resultsModule = new ResultsModule(actions);
+        DetailsModule detailsModule = new DetailsModule(actions);
 
         // Set Test Data
         packageObject.setSiid(130386);
@@ -31,14 +33,20 @@ public class CruiseFlowTests extends BaseTest {
         searchModule.openSearchPageUrl(packageObject);
         searchModule.waitForPageToLoad(packageObject);
         ReporterUtils.writeStatusToReportWithMsg(Status.PASS, "SearchPage Loaded");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());
         searchModule.fillSearchParameters(testData);
         searchModule.clickOnSearch();
-        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.SearchPage.toString());
+        searchModule.confirmThatLandedOnResultsPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on results page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
 
         // Results Page actions
         resultsModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"results page loaded");
         resultsModule.clickBookNowButton();
-        ScreenGrabber.getScreenshot(actions.getWebDriver(), Pages.ResultsPage.toString());
+        resultsModule.ConfirmThatLandedOnDetailsPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on details page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(),Pages.DetailsPage.toString());
     }
 
     @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})

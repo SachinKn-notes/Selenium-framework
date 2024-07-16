@@ -38,7 +38,7 @@ public class BaseTest {
         return testInfoMap.get(threadID);
     }
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
         try {
             FileUtils.deleteDirectory(new File("./test-output/ExtentReport"));
@@ -64,7 +64,7 @@ public class BaseTest {
 
     }
     
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void afterSuite() {
         extentReports.flush();
 
@@ -82,7 +82,7 @@ public class BaseTest {
 
     }
     
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethod(ITestContext context, Method method, Object[] obj) {
 
         System.out.println("username: " + context.getCurrentXmlTest().getParameter("username"));
@@ -101,7 +101,7 @@ public class BaseTest {
         }
     }
     
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterMethod(ITestResult result, Method method, Object[] obj) {
         ExtentTest extentTest = testInfoMap.get(Thread.currentThread().getId());
 
@@ -133,7 +133,6 @@ public class BaseTest {
 
             // Close browser
             if (((WebDriverActions) obj[0]).getWebDriver() != null) {
-                ((WebDriverActions) obj[0]).closeDriver();
                 ((WebDriverActions) obj[0]).quitDriver();
             }
 

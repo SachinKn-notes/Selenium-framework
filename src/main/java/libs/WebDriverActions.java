@@ -12,16 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverActions {
     
-    private final WebDriver driver;
+    private WebDriver driver;
     static final int TIMEOUT = 60;
     private int driverNumber;
-    
-    public WebDriverActions() {
-        System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
-        this.driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
 
     public WebDriver getWebDriver() {
         return driver;
@@ -62,6 +55,12 @@ public class WebDriverActions {
     }
 
     public void openUrl(String url) {
+        if (driver == null) {
+            System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        }
         driver.get(url);
     }
     

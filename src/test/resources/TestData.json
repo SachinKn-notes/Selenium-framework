@@ -119,25 +119,21 @@
 			}
 		],
 		
-		"depositPayment": [
-			{
-
-			}
-		],
+		"depositPayment": [{}],
 		
-		"holdPayment": [
-			{
-
-			}
-		]
+		"holdPayment": [{}]
 	},
 	
 	"air": {
-		
+		"fullPayment": [{}],
+		"depositPayment": [{}],
+		"holdPayment": [{}]
 	},
 	
 	"hotel": {
-		
+		"fullPayment": [{}],
+		"depositPayment": [{}],
+		"holdPayment": [{}]
 	}
 }
 

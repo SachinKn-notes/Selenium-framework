@@ -6,10 +6,12 @@
     <parameter name="username" value="sachinkn"/>
     <parameter name="password" value="sachin@123"/>
 
-    <suite-files>
-        <suite-file path="cruise-tests.xml"/>
-        <suite-file path="air-tests.xml"/>
-        <suite-file path="hotel-tests.xml"/>
-    </suite-files>
+    <test name="all-tests">
+        <classes>
+            <class name="cruiseTests.CruiseFlowTests"/>
+            <class name="airTests.AirFlowTests"/>
+            <class name="hotelTests.HotelFlowTests"/>
+        </classes>
+    </test>
 
 </suite>

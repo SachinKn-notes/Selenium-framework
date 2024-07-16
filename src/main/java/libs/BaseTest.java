@@ -17,10 +17,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import libs.utils.JsonPathUtils;
-import libs.utils.ReporterUtils;
-import libs.utils.ScreenGrabber;
-import libs.utils.ZipUtils;
+import libs.utils.*;
 import objects.EnumContainer;
 import org.apache.commons.io.FileUtils;
 import org.testng.ITestContext;
@@ -85,8 +82,8 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod(ITestContext context, Method method, Object[] obj) {
 
-        System.out.println("username: " + context.getCurrentXmlTest().getParameter("username"));
-        System.out.println("password: " + context.getCurrentXmlTest().getParameter("password"));
+        LoggerUtils.logInfo("username: " + context.getCurrentXmlTest().getParameter("username"));
+        LoggerUtils.logInfo("password: " + context.getCurrentXmlTest().getParameter("password"));
 
         String testName = method.getAnnotation(Test.class).testName().replaceAll(":", "-").replaceAll("[\\\\/*?\"<>|]", "&");
         String[] groups = method.getAnnotation(Test.class).groups();

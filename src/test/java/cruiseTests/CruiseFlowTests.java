@@ -1,6 +1,7 @@
 package cruiseTests;
 
 import com.aventstack.extentreports.Status;
+import libs.utils.LoggerUtils;
 import libs.utils.ReporterUtils;
 import modules.ResultsModule;
 import modules.SearchModule;

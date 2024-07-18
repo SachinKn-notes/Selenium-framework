@@ -6,7 +6,7 @@
     <parameter name="username" value="sachinkn"/>
     <parameter name="password" value="sachin@123"/>
 
-    <test name="Test">
+    <test name="cruise-tests">
         <classes>
             <class name="cruiseTests.CruiseFlowTests"/>
         </classes>

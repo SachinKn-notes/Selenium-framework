@@ -1,5 +1,6 @@
 package modules;
 
+import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
 import modules.Pages.DetailsPage;
 import modules.Pages.NewDetailsPage;
@@ -23,6 +24,15 @@ public class DetailsModule {
 
     public void waitForPageToLoad(PackageObject packageObject){
         initiatePageReference(packageObject);
+        detailsPage.waitForPageToLoad();
+    }
+
+    public void FillDetailsPageParameters(JsonPath jsonPath){
+        detailsPage.fillDetailsPageParameters(jsonPath);
+    }
+
+    public void ConfirmLandOnCategoryPage(){
+        detailsPage.confirmLandOnCategoryPage();
     }
 
 

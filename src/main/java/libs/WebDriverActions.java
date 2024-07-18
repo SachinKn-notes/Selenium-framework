@@ -17,7 +17,7 @@ public class WebDriverActions {
     private int driverNumber;
     
     public WebDriverActions() {
-        System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:/its_me/Software_Apps/chromedriver.exe");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -101,6 +101,14 @@ public class WebDriverActions {
         type(locator, value);
         driver.findElement(locator).sendKeys(keys);
     }
+    public void sleep(long timeoutInSeconds){
+        try {
+            Thread.sleep(timeoutInSeconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void closeDriver() {
         driver.close();
@@ -109,6 +117,7 @@ public class WebDriverActions {
     public void quitDriver() {
         driver.quit();
     }
+
 }
 
 

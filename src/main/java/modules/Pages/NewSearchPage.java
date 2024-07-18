@@ -22,6 +22,13 @@ public class NewSearchPage extends SearchPage {
     static final By SAILING_DATES = By.cssSelector("[data-ody-id='sailingDates']");
     static final By CURRENT_YEAR = By.xpath("(//div[@class='bs-datepicker-head'])[1]//button[@class='current']");
     static final By RESULT_PAGE = By.cssSelector("[data-ody-id='CruiseSailingDatesSection']");
+    static final String FROM_YEAR = "((//div[@class='bs-datepicker-body'])[1]//tr//td)//*[contains(normalize-space(),%s)]";
+    static final String FROM_MONTH = "((//div[@class='bs-datepicker-body'])[1])//span[contains(normalize-space(),%s)]";
+    static final String FROM_DATE = "((//div[@class='bs-datepicker-body'])[1])//tr//td//*[normalize-space()=%s][not(contains(@class,'is-other-month'))]";
+    static final String TO_YEAR = "((//div[@class='bs-datepicker-body'])[1]//tr//td)//*[contains(normalize-space(),%s)]";
+    static final String TO_MONTH = "((//div[@class='bs-datepicker-body'])[1])//span[contains(normalize-space(),%s)]";
+    static final String TO_DATE = "((//div[@class='bs-datepicker-body'])[1])//tr//td//*[normalize-space()=%s][not(contains(@class,'is-other-month'))]";
+
 
     @Override
     public void waitForPageToLoad() {
@@ -36,26 +43,19 @@ public class NewSearchPage extends SearchPage {
         selectsSailingDates(testData);
     }
 
-    private void selectsSailingDates(JsonPath testData) {
+    public void selectsSailingDates(JsonPath testData) {
 
         fromDate = testData.getString("searchPage.sailingDates.from").split("-");
         toDate = testData.getString("searchPage.sailingDates.to").split("-");
         actions.click(SAILING_DATES);
         actions.click(CURRENT_YEAR);
-        final By FROM_YEAR = By.xpath("((//div[@class='bs-datepicker-body'])[1]//tr//td)//*[contains(normalize-space(),"+fromDate[2]+")]");
-        actions.click(FROM_YEAR);
-        final By FROM_MONTH = By.xpath("((//div[@class='bs-datepicker-body'])[1])//span[contains(normalize-space(),"+fromDate[1]+")]");
-        actions.click(FROM_MONTH);
-        final By FROM_DATE = By.xpath("((//div[@class='bs-datepicker-body'])[1])//tr//td//*[normalize-space()="+fromDate[0]+"][not(contains(@class,'is-other-month'))]");
-        actions.click(FROM_DATE);
-
+        actions.click(By.xpath(String.format(FROM_YEAR,fromDate[2])));
+        actions.click(By.xpath(String.format(FROM_MONTH,fromDate[1])));
+        actions.click(By.xpath(String.format(FROM_DATE,fromDate[0])));
         actions.click(CURRENT_YEAR);
-        final By TO_YEAR = By.xpath("((//div[@class='bs-datepicker-body'])[1]//tr//td)//*[contains(normalize-space(),"+toDate[2]+")]");
-        actions.click(TO_YEAR);
-        final By TO_MONTH = By.xpath("((//div[@class='bs-datepicker-body'])[1])//span[contains(normalize-space(),"+toDate[1]+")]");
-        actions.click(TO_MONTH);
-        final By TO_DATE = By.xpath("((//div[@class='bs-datepicker-body'])[1])//tr//td//*[normalize-space()="+toDate[0]+"][not(contains(@class,'is-other-month'))]");
-        actions.click(TO_DATE);
+        actions.click(By.xpath(String.format(TO_YEAR,toDate[2])));
+        actions.click(By.xpath(String.format(TO_MONTH,toDate[1])));
+        actions.click(By.xpath(String.format(TO_DATE,toDate[0])));
 
     }
 

@@ -6,4 +6,8 @@ public class EnumContainer {
         SearchPage, ResultsPage, DetailsPage, CategoryPage, CabinPage, CheckoutPage, BookingDetailsPage
     }
 
+    public enum CreditCardType {
+        Valid, Invalid
+    }
+
 }

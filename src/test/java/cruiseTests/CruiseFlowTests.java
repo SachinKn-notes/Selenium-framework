@@ -29,6 +29,7 @@ public class CruiseFlowTests extends BaseTest {
 
         // Set Test Data
         packageObject.setSiid(130386);
+        packageObject.setCreditCardType(CreditCardType.Valid);
 
         // Search Page actions
         searchModule.openSearchPageUrl(packageObject);

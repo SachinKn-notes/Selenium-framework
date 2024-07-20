@@ -5,11 +5,13 @@ import libs.utils.LoggerUtils;
 import libs.utils.ReporterUtils;
 import modules.CategoryModule;
 import modules.DetailsModule;
+import libs.utils.TestNGRetry;
 import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
 import objects.EnumContainer.*;
 import objects.PackageObject;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -31,6 +33,7 @@ public class CruiseFlowTests extends BaseTest {
 
         // Set Test Data
         packageObject.setSiid(130386);
+        packageObject.setCreditCardType(CreditCardType.Valid);
 
         // Search Page actions
         searchModule.openSearchPageUrl(packageObject);

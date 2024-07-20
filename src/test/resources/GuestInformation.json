@@ -1,0 +1,60 @@
+{
+  "guestInformation": [
+    {
+      "title": "Mr",
+      "gender": "Male",
+      "firstName": "Monish",
+      "lastName": "Luthra",
+      "dateOfBirth": "7-Feb-1992",
+      "address": {
+        "Street": "Koramangala 8th Block, Bengaluru",
+        "country": "us",
+        "state": "Alaska",
+        "city": "Alaska",
+        "zipCode": 45395
+      }
+    },
+    {
+      "title": "Mrs",
+      "gender": "Female",
+      "firstName": "Anna",
+      "lastName": "Luthra",
+      "dateOfBirth": "18-Aug-1994",
+      "address": {
+        "Street": "Koramangala 8th Block, Bengaluru",
+        "country": "us",
+        "state": "Alaska",
+        "city": "Alaska",
+        "zipCode": 45395
+      }
+    },
+    {
+      "title": "Master",
+      "gender": "Male",
+      "firstName": "John",
+      "lastName": "Luthra",
+      "dateOfBirth": "18-Aug-1994",
+      "address": {
+        "Street": "Koramangala 8th Block, Bengaluru",
+        "country": "us",
+        "state": "Alaska",
+        "city": "Alaska",
+        "zipCode": 45395
+      }
+    },
+    {
+      "title": "Miss",
+      "gender": "Female",
+      "firstName": "Sam",
+      "lastName": "Luthra",
+      "dateOfBirth": "18-Aug-1994",
+      "address": {
+        "Street": "Koramangala 8th Block, Bengaluru",
+        "country": "us",
+        "state": "Alaska",
+        "city": "Alaska",
+        "zipCode": 45395
+      }
+    }
+  ]
+}

@@ -22,7 +22,7 @@ public class SearchModule {
         if (packageObject.getSiid() == 130386) {
             searchPage = new NewSearchPage(actions);
         } else if (packageObject.getSiid() == 130385) {
-            searchPage = new NewSearchPage(actions);
+            searchPage = new OldSearchPage(actions);
         }
     }
 

@@ -45,7 +45,12 @@ public class CruiseFlowTests extends BaseTest {
     @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {
-
+        LoggerUtils.logFatal("FATAL");
+        LoggerUtils.logError("ERROR");
+        LoggerUtils.logWarn("WARN");
+        LoggerUtils.logInfo("INFO");
+        LoggerUtils.logDebug("DEBUG");
+        LoggerUtils.logTrace("TRACE");
     }
 
     @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"})

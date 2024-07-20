@@ -3,11 +3,13 @@ package cruiseTests;
 import com.aventstack.extentreports.Status;
 import libs.utils.LoggerUtils;
 import libs.utils.ReporterUtils;
+import libs.utils.TestNGRetry;
 import modules.ResultsModule;
 import modules.SearchModule;
 import libs.utils.ScreenGrabber;
 import objects.EnumContainer.*;
 import objects.PackageObject;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -53,9 +55,20 @@ public class CruiseFlowTests extends BaseTest {
         LoggerUtils.logTrace("TRACE");
     }
 
-    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"})
+    @Test(testName = "Cruise Flow Hold Payment Test", dataProvider = "genericDataProvider", groups = {"Id-03", "reg"}, retryAnalyzer = TestNGRetry.class, timeOut = 500)
     @Parameters(value = {"cruise", "holdPayment"})
-    public void cruiseFlowHoldPaymentTest(WebDriverActions actions, JsonPath testData) {
+    public void cruiseFlowHoldPaymentTest(WebDriverActions actions, JsonPath testData) throws Exception {
+
+        int ranNum = (int) (Math.random() * 10);
+        LoggerUtils.logInfo(String.valueOf(ranNum));
+
+        if (ranNum > 3)
+            Assert.fail("Sumne failed");
+        else if (ranNum >= 3 && ranNum <=7)
+            throw new Exception("Sumne exception");
+        else if (ranNum > 7)
+            ReporterUtils.writeStatusToReportWithMsg(Status.PASS, "Sumne Passed.");
+
 
     }
 }

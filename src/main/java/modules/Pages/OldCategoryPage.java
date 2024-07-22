@@ -12,6 +12,8 @@ public class OldCategoryPage extends CategoryPage{
 
     static private final By BOOK = By.xpath("(//div[@class='categoryview-price-gride']//a[@class='booknow primary-btn'])[1]");
     static private final By CONTINUE = By.xpath("(//a[@onclick='SubmitSelection()'])[last()]");
+    static private final By CABIN_PAGE = By.xpath("//li[@class='step-current']//div[normalize-space()='Staterooms']");
+
 
     @Override
     public void waitFoePageToLoad() {
@@ -29,6 +31,8 @@ public class OldCategoryPage extends CategoryPage{
 
     @Override
     public void confirmLandedOnCabinPage() {
+        actions.waitForElementToBePresent(CABIN_PAGE);
+        actions.waitForElementToBeVisible(CABIN_PAGE);
 
     }
 }

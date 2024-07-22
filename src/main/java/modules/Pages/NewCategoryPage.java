@@ -12,7 +12,7 @@ public class NewCategoryPage extends CategoryPage{
     }
 
     private static final By BOOK = By.xpath("(//div[@id='category_price_content_1']//a[@data-ody-id='BookNowButton'])[last()]");
-    static private final By CABIN_PAGE = By.cssSelector("[class='nav-item  active-nav-item']");
+    static private final By CABIN_PAGE = By.xpath("//li[@class='nav-item  active-nav-item']//*[normalize-space()='Staterooms']");
 
     @Override
     public void waitFoePageToLoad() {

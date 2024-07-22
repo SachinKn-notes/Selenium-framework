@@ -3,12 +3,10 @@ package cruiseTests;
 import com.aventstack.extentreports.Status;
 import libs.utils.LoggerUtils;
 import libs.utils.ReporterUtils;
-import modules.CategoryModule;
-import modules.DetailsModule;
+import modules.*;
 import libs.utils.TestNGRetry;
-import modules.ResultsModule;
-import modules.SearchModule;
 import libs.utils.ScreenGrabber;
+import modules.Pages.CabinPage;
 import objects.EnumContainer.*;
 import objects.PackageObject;
 import org.testng.Assert;
@@ -30,6 +28,8 @@ public class CruiseFlowTests extends BaseTest {
         ResultsModule resultsModule = new ResultsModule(actions);
         DetailsModule detailsModule = new DetailsModule(actions);
         CategoryModule categoryModule = new CategoryModule(actions);
+        CabinModule cabinModule = new CabinModule(actions);
+        CheckOutModule checkOutModule = new CheckOutModule(actions);
 
         // Set Test Data
         packageObject.setSiid(130386);
@@ -64,8 +64,24 @@ public class CruiseFlowTests extends BaseTest {
 
         //CategoryPageActions
         categoryModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"category page loaded");
         categoryModule.clickBookButton();
         categoryModule.confirmLandOnCabinPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on cabin page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(),Pages.CabinPage.toString());
+
+        //CabinPageActions
+        cabinModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Cabin page loaded");
+        cabinModule.bookCabin();
+        cabinModule.confirmLandedOnCheckoutPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on Checkout page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(),Pages.CheckoutPage.toString());
+
+        //Checkout Page Actions
+        checkOutModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Checkout page loaded");
+        checkOutModule.fillCheckOutPageParameters(testData);
     }
     @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider", groups = {"Id-01", "smoke"})
     @Parameters(value = {"cruise", "fullPayment"})
@@ -77,6 +93,8 @@ public class CruiseFlowTests extends BaseTest {
         ResultsModule resultsModule = new ResultsModule(actions);
         DetailsModule detailsModule = new DetailsModule(actions);
         CategoryModule categoryModule = new CategoryModule(actions);
+        CabinModule cabinModule = new CabinModule(actions);
+        CheckOutModule checkOutModule = new CheckOutModule(actions);
 
         // Set Test Data
         packageObject.setSiid(130385);
@@ -110,9 +128,25 @@ public class CruiseFlowTests extends BaseTest {
 
         //CategoryPageActions
         categoryModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"category page loaded");
         categoryModule.clickBookButton();
         categoryModule.confirmLandOnCabinPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on cabin page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(),Pages.CabinPage.toString());
+
+        //CabinPageActions
+        cabinModule.waitForPageToLoad(packageObject);
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Cabin page loaded");
+        cabinModule.bookCabin();
+        cabinModule.confirmLandedOnCheckoutPage();
+        ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Everything went well and landed on Checkout page");
+        ScreenGrabber.getScreenshot(actions.getWebDriver(),Pages.CheckoutPage.toString());
+
+        //Checkout Page Actions
+        checkOutModule.waitForPageToLoad(packageObject);
+        checkOutModule.fillCheckOutPageParameters(testData);
     }
+
     @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {

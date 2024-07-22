@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -56,7 +57,7 @@ public class WebDriverActions {
 
     public void openUrl(String url) {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "D:/Work/EXEs/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "E:/its_me/Software_Apps/chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -107,6 +108,16 @@ public class WebDriverActions {
             e.printStackTrace();
         }
     }
+
+    public void select(By locator,String text){
+        Select select = new Select(driver.findElement(locator));
+        select.selectByVisibleText(text);
+    }
+    public void select(By locator,int index){
+        Select select = new Select(driver.findElement(locator));
+        select.selectByIndex(index);
+    }
+
 
 
     public void closeDriver() {

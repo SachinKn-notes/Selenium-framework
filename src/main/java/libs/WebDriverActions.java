@@ -1,9 +1,6 @@
 package libs;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -63,7 +60,11 @@ public class WebDriverActions {
         }
         driver.get(url);
     }
-    
+
+    public WebElement findElement(By locator) {
+        return driver.findElement(locator);
+    }
+
     public void click(By locator) {
         try {
             waitForElementToBePresent(locator);
@@ -79,6 +80,16 @@ public class WebDriverActions {
             waitForElementToBeClickable(locator);
             driver.findElement(locator).click();
         }
+    }
+
+    public Object executeJavascript(String script, Object... elements) {
+        try {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+            return javascriptExecutor.executeScript(script, elements);
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return "";
     }
 
     public void type(By locator, String value) {

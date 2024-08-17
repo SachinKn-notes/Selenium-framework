@@ -20,8 +20,9 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void afterMethod() {
-        System.out.println("Running afterMethod()");
+    public void afterMethod(Object[] objects) {
+        WebDriveActions actions = (WebDriveActions) objects[0];
+        actions.quiteDriver();
     }
 
     @DataProvider(name = "DataProvider")

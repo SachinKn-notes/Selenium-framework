@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriveActions {
 
     WebDriver driver;
+    long TIMEOUT = 60;
     public void openUrl(String url) {
         System.setProperty("webdriver.chrome.driver", "D:\\Work\\EXEs\\chromedriver.exe");
 
@@ -23,22 +24,47 @@ public class WebDriveActions {
         driver.get(url);
     }
 
+    public void waitForElementToBePresent(By locator) {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public void waitForElementToBeVisible(By locator) {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForElementToBeEnabled(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        wait.until(driver -> element.isEnabled());
+    }
+
+    public void waitForElementToBeClickable(By locator) {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
     public void type(By by, String value) {
-        WebElement ele = driver.findElement(by);
-        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
-        ele.sendKeys(value);
+        waitForElementToBePresent(by);
+        waitForElementToBeEnabled(by);
+        waitForElementToBeVisible(by);
+        driver.findElement(by).sendKeys(value);
     }
 
     public void type(By by, Keys keys) {
-        WebElement ele = driver.findElement(by);
-        ele.sendKeys(keys);
+        waitForElementToBePresent(by);
+        waitForElementToBeEnabled(by);
+        waitForElementToBeVisible(by);
+        driver.findElement(by).sendKeys(keys);
     }
 
     public void click(By by) {
-        WebElement ele = driver.findElement(by);
-        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
-        new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(by));
-        ele.click();
+        waitForElementToBePresent(by);
+        waitForElementToBeVisible(by);
+        waitForElementToBeEnabled(by);
+        waitForElementToBeClickable(by);
+        driver.findElement(by).click();
     }
 
     public void quiteDriver() {

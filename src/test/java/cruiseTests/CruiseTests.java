@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 public class CruiseTests extends BaseTest {
 
-
     @Test(dataProvider = "DataProvider")
     public void test_1(WebDriveActions actions) {
 
@@ -23,13 +22,71 @@ public class CruiseTests extends BaseTest {
 
         resultsPage.clickBookButton();
 
-        actions.quiteDriver();
-
         System.out.println("Test completed.");
     }
 
     @Test(dataProvider = "DataProvider")
     public void test_2(WebDriveActions actions) {
+        SearchPage searchpage = new SearchPage(actions);
+        ResultsPage resultsPage = new ResultsPage(actions);
+
+        actions.openUrl("https://uat.odysol.com/swift/cruise?siid=130386");
+
+        searchpage.selectSailingDates("");
+        searchpage.clickSearchButton();
+
+        resultsPage.clickBookButton();
+
+        System.out.println("Test completed.");
+    }
+
+    @Test(dataProvider = "DataProvider")
+    public void test_3(WebDriveActions actions) {
+        SearchPage searchpage = new SearchPage(actions);
+        ResultsPage resultsPage = new ResultsPage(actions);
+
+        actions.openUrl("https://uat.odysol.com/swift/cruise?siid=130386");
+
+        searchpage.selectSailingDates("");
+        searchpage.clickSearchButton();
+
+        resultsPage.clickBookButton();
+
+        System.out.println("Test completed.");
+    }
+
+    @Test(dataProvider = "DataProvider")
+    public void test_4(WebDriveActions actions) {
+        SearchPage searchpage = new SearchPage(actions);
+        ResultsPage resultsPage = new ResultsPage(actions);
+
+        actions.openUrl("https://uat.odysol.com/swift/cruise?siid=130386");
+
+        searchpage.selectSailingDates("");
+        searchpage.clickSearchButton();
+
+        resultsPage.clickBookButton();
+
+        System.out.println("Test completed.");
+    }
+
+    @Test(dataProvider = "DataProvider")
+    public void test_5(WebDriveActions actions) {
+        SearchPage searchpage = new SearchPage(actions);
+        ResultsPage resultsPage = new ResultsPage(actions);
+
+        actions.openUrl("https://uat.odysol.com/swift/cruise?siid=130386");
+
+        searchpage.selectSailingDates("");
+        searchpage.clickSearchButton();
+
+        resultsPage.clickBookButton();
+
+        System.out.println("Test completed.");
+    }
+
+    @Test(dataProvider = "DataProvider")
+    public void test_6(WebDriveActions actions) {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);
 

@@ -24,6 +24,10 @@ public class WebDriveActions {
         driver.get(url);
     }
 
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
+
     public void waitForElementToBePresent(By locator) {
         new WebDriverWait(driver, TIMEOUT)
                 .until(ExpectedConditions.presenceOfElementLocated(locator));

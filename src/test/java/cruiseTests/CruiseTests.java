@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import libs.BaseTest;
 import libs.WebDriveActions;
+import libs.utils.ReporterUtils;
 import modules.ResultsPage;
 import modules.SearchPage;
 import org.testng.Assert;
@@ -21,9 +22,9 @@ public class CruiseTests extends BaseTest {
         actions.openUrl("https://uat.odysol.com/swift/cruise?siid=130386");
 
         if (actions.getUrl().contains("https://uat.odysol.com/")) {
-            test.pass("URL check Passed.");
+            ReporterUtils.pass("URL check Passed.");
         } else {
-            test.fail("URL check Fail");
+            ReporterUtils.fail("URL check Fail");
         }
 
         searchpage.selectCruiseLine("Royal Caribbean");

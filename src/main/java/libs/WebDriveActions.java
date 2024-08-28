@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriveActions {
 
-    WebDriver driver;
+    private WebDriver driver;
     long TIMEOUT = 60;
     public void openUrl(String url) {
         System.setProperty("webdriver.chrome.driver", "D:\\Work\\EXEs\\chromedriver.exe");
@@ -22,6 +22,10 @@ public class WebDriveActions {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         driver.get(url);
+    }
+
+    public WebDriver getWebDriver() {
+        return driver;
     }
 
     public String getUrl() {

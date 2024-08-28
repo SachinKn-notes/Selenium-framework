@@ -1,21 +1,21 @@
 package cruiseTests;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import libs.BaseTest;
 import libs.WebDriveActions;
 import libs.utils.ReporterUtils;
+import libs.utils.ScreenshotUtils;
 import modules.ResultsPage;
 import modules.SearchPage;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 
 public class CruiseTests extends BaseTest {
 
     @Test(testName = "test_1", dataProvider = "DataProvider")
-    public void test_1(WebDriveActions actions) {
+    public void test_1(WebDriveActions actions) throws IOException {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);
 
@@ -29,6 +29,8 @@ public class CruiseTests extends BaseTest {
 
         searchpage.selectCruiseLine("Royal Caribbean");
         searchpage.clickSearchButton();
+
+        ScreenshotUtils.takeScreenshot(actions, "SearchPageScreenshot");
 
         resultsPage.clickBookButton();
     }

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class CruiseTests extends BaseTest {
 
-    @Test(testName = "test_1", dataProvider = "DataProvider")
+    @Test(testName = "test_1", dataProvider = "DataProvider", groups = {"ID-001", "smoke"})
     public void test_1(WebDriveActions actions) throws IOException {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);
@@ -35,7 +35,7 @@ public class CruiseTests extends BaseTest {
         resultsPage.clickBookButton();
     }
 
-    @Test(testName = "test_2", dataProvider = "DataProvider")
+    @Test(testName = "test_2", dataProvider = "DataProvider", groups = {"ID-002", "smoke"})
     public void test_2(WebDriveActions actions) {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);
@@ -48,7 +48,7 @@ public class CruiseTests extends BaseTest {
         resultsPage.clickBookButton();
     }
 
-    @Test(testName = "test_3", dataProvider = "DataProvider")
+    @Test(testName = "test_3", dataProvider = "DataProvider", groups = {"ID-003", "reg"})
     public void test_3(WebDriveActions actions) {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);
@@ -63,7 +63,7 @@ public class CruiseTests extends BaseTest {
         Assert.fail();
     }
 
-    @Test(testName = "test_4", dataProvider = "DataProvider", enabled = false)
+    @Test(testName = "test_4", dataProvider = "DataProvider", groups = {"ID-004", "smoke", "reg"})
     public void test_4(WebDriveActions actions) {
         SearchPage searchpage = new SearchPage(actions);
         ResultsPage resultsPage = new ResultsPage(actions);

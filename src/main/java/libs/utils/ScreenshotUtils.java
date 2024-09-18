@@ -21,6 +21,8 @@ public class ScreenshotUtils {
         WebDriver driver = actions.getWebDriver();
         TakesScreenshot tss = (TakesScreenshot) driver;
 
+        actions.waitForPageToLoad();
+
         File from = tss.getScreenshotAs(OutputType.FILE);
         File to = new File("./test-output/Screenshots/" + fullFileName);
 

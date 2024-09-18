@@ -1,10 +1,10 @@
 package libs;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.aventstack.extentreports.Status;
+import libs.utils.ReporterUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -51,6 +51,25 @@ public class WebDriveActions {
     public void waitForElementToBeClickable(By locator) {
         new WebDriverWait(driver, TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void waitForDocumentToGetReady() {
+        new WebDriverWait(driver, 60)
+                .until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+                .executeScript("return document.readyState").equals("complete"));
+    }
+
+    public void waitForPageToLoad() {
+        waitForDocumentToGetReady();
+        new WebDriverWait(driver, 120).until((ExpectedCondition<Boolean>) driver -> {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            if ((Boolean) js.executeScript("return !!window.jQuery")) {
+                return (Boolean) js.executeScript("return jQuery.active == 0");
+            } else {
+                ReporterUtils.log(Status.WARNING, "Jquery is not loaded for ");
+                return true;
+            }
+        });
     }
 
     public void type(By by, String value) {

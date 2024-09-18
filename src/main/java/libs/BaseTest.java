@@ -27,7 +27,7 @@ public class BaseTest {
         return tests.get(threadId);
     }
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
 
         try {
@@ -42,13 +42,13 @@ public class BaseTest {
         extentReports.attachReporter(esr);
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void afterSuite() {
         System.out.println("Running afterSuite()");
         extentReports.flush();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethod(Method method) {
         System.out.println("Running beforeMethod()");
 
@@ -57,7 +57,7 @@ public class BaseTest {
 
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterMethod(ITestResult result, Object[] objects) throws IOException {
         WebDriveActions actions = (WebDriveActions) objects[0];
         ExtentTest test = tests.get(Thread.currentThread().getId());
